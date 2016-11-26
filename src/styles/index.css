@@ -1,0 +1,446 @@
+@charset "utf-8";
+@import '//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700';
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baselinebaseline;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-family: 'Open Sans', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif !important;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+strong {
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+img {
+    border: 0;
+    max-width: 100%;
+}
+
+::-webkit-scrollbar {
+    background: #666;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #666;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 14px
+}
+
+::-webkit-scrollbar-thumb {
+    height: 80px;
+    background-color: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #111;
+}
+
+
+/*-----------------[ MAIN ]------------------------*/
+
+#wrap {
+    display: table;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#wrap .control {
+    position: absolute;
+    left: 2%;
+    top: 30%;
+}
+
+#wrap .control div {}
+
+#wrap .control i {
+    background: #ddd;
+    padding: 20px;
+    width: 65px;
+    height: 65px;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 1.6em;
+    border-radius: 50%;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+#wrap .control i:hover {
+    background: #3aa8bd;
+    cursor: pointer;
+    box-shadow: 0 0 0 5px #fff, 0 0 0 8px #3aa8bd;
+}
+
+#wrap .middle, .center, .start {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#wrap .play-list {
+    position: fixed;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+    z-index: 99999
+}
+
+#wrap .play-list ul {
+    margin-left: -400px;
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    top: 0px;
+    left: 0px;
+    padding: 20px 10px;
+    z-index: 99999 !important;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.6);
+    box-shadow: -2px 0px 10px 2px rgba(0, 0, 0, 0.8);
+    overflow: auto;
+}
+
+#wrap .play-list ul li {
+    margin-top: 2px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    max-width: 300px;
+    overflow: hidden;
+}
+
+#wrap .play-list ul .playing {
+    color: #fff;
+    font-weight: 800;
+}
+
+#wrap .play-list ul .playing:before {
+    content: '[ '
+}
+
+#wrap .play-list ul .playing:after {
+    content: ' ]'
+}
+
+#wrap .play-list ul li:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+#wrap .play-list .list-button {
+    padding: 10px 15px;
+    margin: 10px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.6em;
+    border-radius: 5px;
+}
+
+#wrap .play-list .list-button:hover {
+    background: rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+#wrap .album {
+    position: relative;
+    width: 400px;
+    float: left;
+    border-radius: 50%;
+}
+
+#wrap .album img {
+    width: 100%;
+    border-radius: 50%;
+    border: 10px solid rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+#wrap .playing img {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+    -webkit-animation: rotate 20s linear infinite;
+    -moz-animation: rotate 20s linear infinite;
+    -o-animation: rotate 20s linear infinite;
+    animation: rotate 20s linear infinite;
+}
+
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+@-moz-keyframes rotate {
+    from {
+        -moz-transform: rotate(0deg)
+    }
+    to {
+        -moz-transform: rotate(359deg)
+    }
+}
+
+@-o-keyframes rotate {
+    from {
+        -o-transform: rotate(0deg)
+    }
+    to {
+        -o-transform: rotate(359deg)
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(359deg)
+    }
+}
+
+#wrap .album .center {
+    position: absolute;
+    top: 160px;
+    left: 150px;
+    width: 100px;
+    height: 100px;
+    z-index: 999;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 10px rgba(247, 247, 247, 0.53), 0px 0px 5px #333 inset;
+}
+
+#wrap .buttons {
+    display: inline-block;
+    overflow: hidden;
+}
+
+#wrap .album .start {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 170px;
+    left: 160px;
+    z-index: 999;
+    background: #FFF;
+    border-radius: 50%;
+}
+
+#wrap .album .start i {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+#wrap .album .start:hover i {
+    color: #3aa8bd;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+#wrap .album .start .fa-play, #wrap .album .start .fa-pause {
+    font-size: 3em;
+    margin-top: 21%;
+    color: #ccc;
+}
+
+#wrap .album .start .fa-play:hover, #wrap .album .start .fa-pause:hover {
+    cursor: pointer;
+}
+
+#wrap .prev, #wrap .next {
+    font-size: 6em;
+    color: #ccc;
+    z-index: -1;
+    float: left;
+    margin-top: 260px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+#wrap .prev:hover, #wrap .next:hover {
+    color: #3aa8bd;
+    cursor: pointer;
+    /* -webkit-transform: scale(.93);
+  -moz-transform: scale(.93);
+  -o-transform: scale(.93);
+  -ms-transform: scale(.93);
+  transform: scale(.96);  */
+}
+
+#wrap .title {
+    position: relative;
+    margin-top: 20px;
+    color: #000;
+}
+
+#wrap .title h1 {
+    font-size: 2.4em;
+    font-family: 'Open Sans', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+
+#wrap .title h1:before {
+    content: '「 ';
+    font-family: 'Open Sans';
+}
+
+#wrap .title h1:after {
+    content: ' 」';
+    font-family: 'Open Sans';
+}
+
+#wrap .title h2 {
+    margin-top: 10px;
+    font-size: 1.6em;
+    color: #666;
+    font-family: 'Open Sans', Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+
+#wrap .progress {
+    height: 3px;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 30px;
+    background: #ccc;
+    cursor: pointer;
+}
+
+#wrap .progress .current {
+    position: relative;
+    width: 0%;
+    height: 100%;
+    background: #3aa8bd;
+}
+
+@media screen and (max-width: 700px) {
+    #wrap .control {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #wrap .control i {
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+    #wrap .control div {
+        display: inline-block;
+    }
+    #wrap .play-list ul {
+        font-size: 1.6em;
+    }
+    #wrap .play-list ul li {
+        padding: 15px 10px;
+    }
+    #pic {
+        width: 250px!important;
+        height: 250px!important;
+    }
+    #wrap .album .center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 60px;
+        height: 60px;
+        margin-top: -100px;
+        margin-left: -30px;
+    }
+    #wrap .album .start {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 35px;
+        height: 35px;
+        margin-top: -90px;
+        margin-left: -15px;
+    }
+    #wrap .album .start i {
+        font-size: 30px !important;
+    }
+    #wrap .title h1 {
+        font-size: 2em;
+    }
+    #wrap .title h2 {
+        font-size: 1em;
+    }
+    #wrap .album {
+        width: 300px;
+        height: 400px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -200px;
+        margin-left: -150px;
+    }
+    #wrap .prev {
+        margin-right: 60px;
+    }
+    #wrap .prev i, #wrap .next i {
+        font-size: 70px;
+    }
+    #wrap .progress {
+        width: 80%;
+    }
+}
